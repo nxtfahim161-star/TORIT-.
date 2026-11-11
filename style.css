@@ -1,0 +1,504 @@
+/* Custom CSS System */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: #050811;
+    color: #f8fafc;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Galaxy Canvas */
+#galaxy-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Loading Intro Screen */
+#loader-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #03050b;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+/* Earth & Orbiting Moon */
+.space-orbit-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.earth {
+    width: 65px;
+    height: 65px;
+    background: radial-gradient(circle at 30% 30%, #4facfe, #00f2fe, #002244);
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+    animation: rotateEarth 12s linear infinite;
+}
+
+.moon-orbit {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    animation: orbitMoon 4s linear infinite;
+}
+
+.moon {
+    width: 14px;
+    height: 14px;
+    background: #e2e8f0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(226, 232, 240, 0.8);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes rotateEarth {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes orbitMoon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.loader-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #00f2fe, #4facfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.counter-container {
+    width: 220px;
+    margin: 0 auto;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+#progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #00f2fe, #7f00ff);
+    transition: width 0.1s ease;
+}
+
+#load-percentage {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #00f2fe;
+}
+
+.loader-sub {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 10px;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #050811;
+    font-size: 1.2rem;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+.brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #00f2fe, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.pro-badge-btn {
+    background: linear-gradient(135deg, #7f00ff, #e100ff);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(127, 0, 255, 0.5);
+    transition: transform 0.2s;
+}
+
+.pro-badge-btn:hover {
+    transform: scale(1.05);
+}
+
+.settings-icon-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.settings-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Hero Section */
+.hero-container {
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.robot-avatar {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(127, 0, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    color: #00f2fe;
+}
+
+.robot-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(127, 0, 255, 0.6);
+    z-index: -1;
+}
+
+.hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #00f2fe, #9d4edd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    color: #94a3b8;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+/* Prompt Box */
+.prompt-box {
+    position: relative;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(127, 0, 255, 0.4);
+    border-radius: 30px;
+    padding: 8px 15px 8px 45px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(127, 0, 255, 0.2);
+    margin-bottom: 25px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 18px;
+    color: #00f2fe;
+}
+
+.prompt-box input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.send-btn {
+    background: linear-gradient(135deg, #00f2fe, #7f00ff);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+/* Pills */
+.action-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pill-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pill-btn:hover {
+    background: rgba(0, 242, 254, 0.15);
+    border-color: #00f2fe;
+    color: #fff;
+}
+
+/* Chat Stream Box */
+.chat-stream-box {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.msg-row {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.msg-user {
+    color: #00f2fe;
+    font-weight: 700;
+}
+
+.msg-bot {
+    color: #e2e8f0;
+}
+
+.hidden { display: none !important; }
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-card {
+    background: #0f172a;
+    border: 1px solid rgba(127, 0, 255, 0.5);
+    border-radius: 24px;
+    padding: 30px;
+    max-width: 750px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 0 40px rgba(127, 0, 255, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.modal-crown {
+    font-size: 2.5rem;
+    color: #e100ff;
+    margin-bottom: 10px;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.plan-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.plan-card.popular {
+    border-color: #00f2fe;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+}
+
+.discount-badge {
+    position: absolute;
+    top: -12px;
+    right: 15px;
+    background: #00f2fe;
+    color: #050811;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.price {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 15px 0 10px;
+}
+
+.price span {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.select-plan-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00f2fe, #7f00ff);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Settings Card Internal styling */
+.settings-group {
+    margin-bottom: 20px;
+}
+
+.settings-group h3 {
+    font-size: 0.85rem;
+    color: #00f2fe;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.auth-btn, .clear-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 6px 14px;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#model-select {
+    background: #1e293b;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .hero-title { font-size: 2rem; }
+    .plans-grid { grid-template-columns: 1fr; }
+  }
+  
