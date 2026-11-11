@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torit ai - Intelligent AI Assistant</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Planet Earth & Moon Loading Intro Screen -->
+    <div id="loader-screen">
+        <div class="loader-content">
+            <div class="space-orbit-container">
+                <div class="earth">
+                    <div class="continents"></div>
+                </div>
+                <div class="moon-orbit">
+                    <div class="moon"></div>
+                </div>
+            </div>
+            <h2 class="loader-title">Torit ai</h2>
+            <div class="counter-container">
+                <div class="progress-bar"><div id="progress-fill"></div></div>
+                <span id="load-percentage">0%</span>
+            </div>
+            <p class="loader-sub">Connecting to Neural Space Network...</p>
+        </div>
+    </div>
+
+    <!-- 2. Galaxy Particle Background Canvas -->
+    <canvas id="galaxy-canvas"></canvas>
+
+    <!-- 3. Header Navigation -->
+    <header class="main-header">
+        <div class="brand">
+            <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+            <span class="brand-name">Torit ai</span>
+        </div>
+        <div class="header-actions">
+            <button class="pro-badge-btn" id="open-pro-btn">
+                <i class="fa-solid fa-crown"></i> Pro
+            </button>
+            <button class="settings-icon-btn" id="open-settings-btn">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 4. Hero & Main Workspace -->
+    <main class="hero-container">
+        <!-- Robot & Title -->
+        <div class="hero-graphic">
+            <div class="robot-avatar">
+                <div class="robot-glow"></div>
+                <i class="fa-solid fa-robot"></i>
+            </div>
+        </div>
+        
+        <h1 class="hero-title">Chat with Your <span class="gradient-text">AI Assistant</span></h1>
+        <p class="hero-subtitle">Ask anything, get instant answers, and explore the power of Torit ai.</p>
+
+        <!-- Chat Container / Output Log -->
+        <div id="chat-stream-box" class="chat-stream-box hidden">
+            <!-- Dynamic Messages inserted here via JS -->
+        </div>
+
+        <!-- Prompt Input Bar -->
+        <div class="prompt-box">
+            <i class="fa-solid fa-sparkles input-icon"></i>
+            <input type="text" id="user-prompt" placeholder="Ask anything..." autocomplete="off">
+            <button id="send-btn" class="send-btn">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <!-- Action Suggestion Pills -->
+        <div class="action-pills">
+            <button class="pill-btn" data-prompt="Summarize this text in simple terms"><i class="fa-solid fa-bolt"></i> Summarize</button>
+            <button class="pill-btn" data-prompt="Explain quantum physics like I am 5"><i class="fa-solid fa-lightbulb"></i> Explain</button>
+            <button class="pill-btn" data-prompt="Write a modern HTML and CSS button code"><i class="fa-solid fa-code"></i> Write Code</button>
+            <button class="pill-btn" data-prompt="Generate a futuristic galaxy artwork concept"><i class="fa-regular fa-image"></i> Create Image</button>
+        </div>
+    </main>
+
+    <!-- 5. PRO Membership Offer Modal -->
+    <div id="pro-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button class="close-modal" id="close-pro-btn">&times;</button>
+            <div class="modal-header">
+                <i class="fa-solid fa-crown modal-crown"></i>
+                <h2>Upgrade to <span class="gradient-text">Torit ai Pro</span></h2>
+                <p>Unlock unlimited speed, ultra-deep reasoning, and priority access.</p>
+            </div>
+            
+            <div class="plans-grid">
+                <!-- 5 Years Plan -->
+                <div class="plan-card popular">
+                    <span class="discount-badge">20% OFF</span>
+                    <h3>5 Year Plan</h3>
+                    <div class="price">৳9,999 <span>/ 5 Years</span></div>
+                    <p>Ultimate long-term access for power users.</p>
+                    <button class="select-plan-btn">Claim Offer</button>
+                </div>
+                <!-- 1 Year Plan -->
+                <div class="plan-card">
+                    <span class="discount-badge">10% OFF</span>
+                    <h3>1 Year Plan</h3>
+                    <div class="price">৳999 <span>/ Year</span></div>
+                    <p>Most popular plan for creators & coders.</p>
+                    <button class="select-plan-btn">Select Plan</button>
+                </div>
+                <!-- 3 Months Plan -->
+                <div class="plan-card">
+                    <span class="discount-badge">5% OFF</span>
+                    <h3>3 Month Plan</h3>
+                    <div class="price">৳399 <span>/ 3 Months</span></div>
+                    <p>Great choice to start exploring Pro features.</p>
+                    <button class="select-plan-btn">Select Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Full Featured Settings Modal -->
+    <div id="settings-modal" class="modal-overlay hidden">
+        <div class="modal-card settings-card">
+            <button class="close-modal" id="close-settings-btn">&times;</button>
+            <h2><i class="fa-solid fa-sliders"></i> Torit ai Settings</h2>
+            
+            <div class="settings-group">
+                <h3>Account & Access</h3>
+                <div class="setting-item">
+                    <span>Sign In / Sign Up</span>
+                    <button class="auth-btn">Account</button>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <h3>AI Model Preferences</h3>
+                <div class="setting-item">
+                    <span>Model Version</span>
+                    <select id="model-select">
+                        <option>Torit Flash 2.5 (Fast)</option>
+                        <option>Torit Pro Ultra (Deep Reasoning)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <h3>Appearance & Effects</h3>
+                <div class="setting-item">
+                    <span>Starfield Background Animation</span>
+                    <input type="checkbox" id="particle-toggle" checked>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <h3>Data Management</h3>
+                <div class="setting-item">
+                    <span>Clear Chat History</span>
+                    <button class="clear-btn" id="clear-chats">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
+  
